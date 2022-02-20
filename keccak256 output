@@ -1,0 +1,18 @@
+
+// SPDX-License-Identifier: UNLICENSED
+
+pragma solidity ^0.6.0;
+
+contract hashtest {
+    function hash(string memory _text, uint _num, address _addr) public pure returns (bytes32) {
+        return keccak256(abi.encode(_text, _num, _addr));
+    }
+    //An address literal must contain 40 character (20 bytes long), and be prefixed with 0x.
+    //Address literals must have a valid checksum. 
+    //If they do not pass the checksum test, Remix or the Solidity compiler will bring up a warning
+    address mine = 0x71C7656EC7ab88b098defB751B7401B5f6d8976F;
+    bytes32 public output = hash("Salam", 12 , mine);
+}
+
+//The output of keccak256 is a string that is 256 bits / 32 bytes / 64 characters long:
+//                 0xf2df181c5353a5397607425f0709a27c2440a0c9d49a9126a5b13f7eaa5822b8
