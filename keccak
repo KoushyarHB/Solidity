@@ -15,4 +15,6 @@ contract hashtest {
 }
 
 //The output of keccak256 is a string that is 256 bits / 32 bytes / 64 characters long:
-//                 0xf2df181c5353a5397607425f0709a27c2440a0c9d49a9126a5b13f7eaa5822b8
+//abi.encode       0xf2df181c5353a5397607425f0709a27c2440a0c9d49a9126a5b13f7eaa5822b8
+//abi.encodePacked 0x286bb78390d8f21709f3e51c2fefb91542adb6e77b3416b83ccbc174740cf614
+
