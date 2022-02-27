@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.7.0 <0.9.0;
+
+contract messageSenderTest {
+
+    mapping (address => uint) favoriteNumber;
+
+    function pushMyFavNumber(uint _myNum) public {
+        favoriteNumber[msg.sender] = _myNum;
+    }
+
+    function whatsMyNumber() public view returns(uint) {
+        return favoriteNumber[msg.sender];
+    }
+
+}
