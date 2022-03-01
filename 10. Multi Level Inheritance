@@ -21,7 +21,6 @@ contract B is A {
 	function getB() external payable returns(string memory){
 		y = string(abi.encodePacked(x, c));
 	}
-    //string public result1 = testInheritance();
 }
 
 // Defining child contract C inheriting parent contract B
