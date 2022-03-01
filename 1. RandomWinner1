@@ -2,7 +2,7 @@
 
 pragma solidity ^0.5.0;
 
-contract RandomWinner{
+contract RandomWinner1{
 
     struct ghore{
         string name;
