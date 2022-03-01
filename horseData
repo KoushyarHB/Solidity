@@ -1,5 +1,8 @@
 pragma solidity 0.5.1;
 
+//Prelude to TestRandomWinner2
+//Teaches you an alternative way to add members to an array of structs. 
+
 contract Horses {
 
     struct HorseStruct {
