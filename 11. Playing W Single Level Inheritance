@@ -24,3 +24,12 @@ contract B is A {
 	}
 }
 
+// In Remix it is up to us to deploy whichever contract that exists in our solidity file.
+// But after deployment of a contract that has inherited (child) from some other contract (parent), we have access to:
+// 1. all the <public> functions of the parent contract.
+// 2. all the <external> functions of the parent contract 
+// 3. all the <public> state variables of the parent contract.
+// 4. all the <internal> state variables of the parent contract.
+// Note: External functions are just like public functions. The only difference is that they can't be used within their own contract without using <this>.
+// Note: State variables can not be declared <external>.
+// Note: We don't have access to <private> state variables and functions of the parent contract.   
