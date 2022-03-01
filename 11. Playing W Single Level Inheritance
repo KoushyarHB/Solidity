@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity >=0.4.22 <0.6.0;
+
+contract A {
+	// Declaring state variables
+	string a = "Solidity " ;
+	string b = "Is ";
+  string x;
+	// Defining external function to return concatenated string
+	function getA() public{
+		x = string(abi.encodePacked(a,b));
+	}
+}
+
+// Defining child contract B inheriting parent contract A
+contract B is A {
+	// Declaring state variables of child contract B
+    string c = "Awsome";
+    string public result;
+	// Defining external function to return concatenated string
+	function getB() public returns(string memory){
+		result = string(abi.encodePacked(x,c));
+    return result;
+	}
+}
+
