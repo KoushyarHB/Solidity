@@ -1,0 +1,44 @@
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity >=0.4.22 <0.6.0;
+
+contract Store{
+
+    struct Item{
+        uint price;
+        uint units;
+    }
+
+    Item[] public items;
+
+    function newItem (uint _price, uint _units) public {
+        Item memory newitem = Item(_price,_units); // storage won't be accepted here
+        items.push(newitem);
+    }
+
+    // set to non-view to estimate gas
+    function getUsingStorage (uint _index) public returns (uint) {
+        Item storage itempointer = items[_index];
+        return itempointer.units;
+    }
+    // gas cost = 25792
+
+    // set to non-view to estimate gas
+    function getUsingMemory (uint _index) public returns (uint) {
+        Item memory itempointer = items[_index];
+        return itempointer.units;
+    }
+    // gas cos = 28114
+
+    function addItemUsingStorage(uint _itemIdx, uint _units) public {
+        Item storage item = items[_itemIdx];
+        item.units += _units;
+    }
+    // 28844 more gas but persistent
+
+    // set to non-view to estimate gas
+    function addItemUsingMemory(uint _itemIdx, uint _units) public {
+    Item memory item = items[_itemIdx];
+    item.units += _units;
+    }
+    // 28225 less gas but non-persistent
+}
