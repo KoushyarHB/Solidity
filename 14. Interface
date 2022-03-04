@@ -1,0 +1,38 @@
+
+
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity >=0.4.22 <0.6.0;
+
+contract LuckyNumber {
+  mapping (address => uint) numbers;
+
+  function setNum(uint _num) public {
+    numbers[msg.sender] = _num;
+  }
+
+  function getNum(address _myAddress) public view returns (uint) {
+    return numbers[_myAddress];
+  }
+}
+
+
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity >=0.4.22 <0.6.0;
+
+contract LuckyNumberInterface {
+    function getNum(address _myAddress) public view returns (uint);
+}
+
+contract MyContract {
+  address LuckyNumberAddress = 0xB098aE7ddc405A6a6F891693e00c8B9895e1a93f;
+  // ^ The address of the LuckyNumber contract on Ethereum
+  LuckyNumberInterface LuckyNumberContract = LuckyNumberInterface(LuckyNumberAddress);
+  // Now `LuckyNumberContract` is pointing to the other contract
+
+  function someFunction() public view returns(uint) {
+    // Now we can call `getNum` from that contract:
+    return LuckyNumberContract.getNum(msg.sender);
+  }
+}
+
+
