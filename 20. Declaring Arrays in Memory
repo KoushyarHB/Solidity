@@ -1,0 +1,46 @@
+// SPDX-License-Identifier: UNLICENSED
+// Three examples for 
+// Declaring Arrays in Memory
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract MappingLoop {
+
+    function getArray() external pure returns(uint[] memory) {
+        uint[] memory values = new uint[](3);
+        values[0] = 1;
+        values[1] = 2;
+        values[2] = 3;
+        return values;
+    }
+
+    function getEvens() pure external returns(uint[] memory) {
+        uint[] memory evens = new uint[](5);
+        uint counter = 0;
+        for (uint i = 1; i <= 10; i++) {
+            if (i % 2 == 0) {
+            evens[counter] = i;
+            counter++;
+            }
+        }
+        return evens;
+    }
+
+    mapping (uint => address) Addresses;
+
+    uint public Counter = 0;
+
+    function addToMapping(address addressDetails) public returns(uint) {
+        Counter++;
+        Addresses[Counter] = addressDetails;
+        return Counter;
+    }
+
+    function getMappingMember() public view returns(address[] memory) {       
+        address[] memory localBytes = new address[] (Counter);
+        for(uint i = 1; i <= Counter; i++){
+            localBytes[i-1] = Addresses[i];
+        }
+        return(localBytes);
+    }
+}
