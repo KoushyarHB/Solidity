@@ -1,0 +1,30 @@
+// SPDX-License-Identifier: UNLICENSED
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract OddsFinder {
+
+    function Odds(uint _number) public pure returns(uint[] memory){
+        
+        uint size = 0;
+        uint counter = 0;
+        
+        if (_number % 2 == 0) {
+            size = _number / 2;
+        } else {
+            size = (_number + 1) / 2;
+        }
+        
+        uint[] memory result = new uint[](size);
+
+        for (uint i = 1; i <= _number; i++) {
+            if (i % 2 != 0) {
+                result[counter] = i;
+                counter++;
+            }
+        } 
+        
+        return result;
+    }
+
+}
